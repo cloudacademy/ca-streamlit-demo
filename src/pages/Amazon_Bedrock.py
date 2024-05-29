@@ -81,11 +81,15 @@ with st.expander("See code"):
         import boto3
         import json
         import base64
-        import streamlit as st
         from io import BytesIO
-        from helpers.credentials import credential_helper
+        import streamlit as st
 
-        session = credential_helper.create_new_session()
+        session = boto3.Session(
+            aws_access_key_id='####',
+            aws_secret_access_key='####',
+            region_name='####'
+        )
+
         bedrock = session.client('bedrock-runtime')
         bedrock_model_id = "amazon.titan-image-generator-v1"
 
