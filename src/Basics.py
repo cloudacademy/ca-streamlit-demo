@@ -94,7 +94,7 @@ with st.container(border=True):
             st.code("""
             prompt = st.chat_input("Say something")
             if prompt:
-                st.write(f"You ented the following prompt: :blue[{prompt}]")
+                st.write(f"You entered the following prompt: :blue[{prompt}]")
             """)
 
     with markdown:
