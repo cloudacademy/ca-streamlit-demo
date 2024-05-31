@@ -1,6 +1,6 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
-  "title": "Employing Streamlit to Build Interactive Machine Learning and Data Science Applications",
+  "title": "Streamlit AWS Lab",
   "steps": [
     {
       "directory": "src",
