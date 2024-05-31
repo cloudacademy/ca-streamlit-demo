@@ -5,5 +5,5 @@ Streamlit application to demonstrate the basics of the Streamlit library, AWS re
 ### Run the app
 
 ```
-cd src && streamlit run Basics.py
+cd src/ && pip install -r requirements.txt && streamlit run Basics.py
 ```
