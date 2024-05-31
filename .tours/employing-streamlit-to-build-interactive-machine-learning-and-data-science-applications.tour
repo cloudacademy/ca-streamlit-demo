@@ -157,7 +157,17 @@
       "file": "src/pages/Amazon_S3.py",
       "description": "This page of the application interacts with an Amazon S3 bucket using the Boto3 Python library.\n\nThe page will display two columns. The first column can be used to upload files and images to an Amazon S3 bucket, and the second column can be used to select an object from the bucket to display on the page.\n\n[Amazon S3 page](./assets/s3_before.png)",
       "line": 1,
-      "title": "Amazon S3"
+      "title": "Amazon S3",
+      "selection": {
+        "start": {
+          "line": 5,
+          "character": 1
+        },
+        "end": {
+          "line": 5,
+          "character": 41
+        }
+      }
     },
     {
       "file": "src/pages/Amazon_S3.py",
@@ -222,8 +232,14 @@
           "character": 39
         }
       },
-      "description": "The selected object from the `read_s3` column will be displayed when it is selected.\n\nThe application will make an S3 `get_object()` call to retrieve the object, and an `if/else` statement is used to render the object based on the object name. \n\nImages ending with `png` and `jpg` will be rendered using an `st.image` element, PDFs with the custom `pdf_viewer` component, and text files using a `st.write` element.",
+      "description": "The selected object from the `read_s3` column will be displayed when it is selected.\n\nThe application will make an S3 `get_object()` call to retrieve the object, and an `if/else` statement is used to render the object based on the object name. \n\nImages ending with `png` and `jpg` will be rendered using an `st.image` element, PDFs with the custom `pdf_viewer` component, and text files using a `st.write` element.\n\n[Upload and display](./assets/s3_after.png)",
       "title": "Display objects"
+    },
+    {
+      "file": "src/pages/Amazon_Bedrock.py",
+      "description": "The Amazon Bedrock page will use the Amazon Titan Image Generator Model to generate an image based on a prompt. ",
+      "line": 1,
+      "title": "Amazon Bedrock"
     },
     {
       "file": "src/pages/Amazon_Bedrock.py",
@@ -237,7 +253,8 @@
           "character": 32
         }
       },
-      "description": "boto3 bedrock client + decode_image helper"
+      "description": "The Amazon Bedrock runtime client and model are declared, along with a helper function, `decode_image`. The Titan Image Generator model will return image data that will need to be converted to a BytesIO object to render using the `st.image` element.",
+      "title": "Bedrock runtime"
     },
     {
       "file": "src/pages/Amazon_Bedrock.py",
@@ -251,7 +268,8 @@
           "character": 36
         }
       },
-      "description": "gen image function "
+      "description": "The `generate_image` function passes the `imageGenerationConfig`, `taskType`, and user `prompt` to the Bedrock `invoke_model` method. The method will return a JSON body that is parsed to retrieve the generated image. \n\nThe generated image is decoded using the `decode_image` function and returned.",
+      "title": "Generate image"
     },
     {
       "file": "src/pages/Amazon_Bedrock.py",
@@ -261,11 +279,27 @@
           "character": 1
         },
         "end": {
+          "line": 63,
+          "character": 45
+        }
+      },
+      "description": "The main container of the page contains two columns.\n\nIn the first column, users will enter a prompt in a `st.text_input` that will be stored as the `prompt_text` variable. \n\nThe remaining elements in this column are used to define the `Generate` and `Clear` buttons.\n\nThe `clear_field` function interacts with the Streamlit session state. It accepts a prompt and updates the value of the `st.session_state.prompt`. Session state is used to store and persist state that can be manipulated with the use of callback functions. `clear_field` is a callback function that will get invoked when a user clicks the `Clear` button.",
+      "title": "Prompt input"
+    },
+    {
+      "file": "src/pages/Amazon_Bedrock.py",
+      "selection": {
+        "start": {
+          "line": 65,
+          "character": 1
+        },
+        "end": {
           "line": 71,
           "character": 90
         }
       },
-      "description": "text input column "
+      "description": "Two smaller columns are carved out to define the two buttons.\n\nThe `generate` column defines a `generate_button` variable which is used to determine when to generate an image. \n\nThe `clear` column defines the `on_click` parameter, which accepts the name of the callback function to invoke. The argument, or `prompt`, passed into the `clear_field` function is an empty string, which will clear the `text_input` field when the button is clicked.",
+      "title": "Buttons"
     },
     {
       "file": "src/pages/Amazon_Bedrock.py",
@@ -279,11 +313,23 @@
           "character": 51
         }
       },
-      "description": "result column  spinner description"
+      "description": "The `result_column` checks if the `generate_button` value is true and calls the `st.spinner` element to display a temporary message as the `generate_image` function works in the background.\n\nThe resulting image is then passed to a `st.image` element to render it on the page.\n\n[Amazon Bedrock Image Generator](./assets/image_gen.png)",
+      "title": "Results"
     },
     {
       "directory": "src",
-      "description": "Conclusion "
+      "description": "Up next, you will deploy this application to an Amazon EC2 instance and run it. You will learn how to configure the environment to run the application and interact with it in your browser.\n\nThe Streamlit elements covered in this walk-through will be accessible as you interact with the application. \n\nReturn to the Cloudacademy lab window to complete the rest of the lab.",
+      "selection": {
+        "start": {
+          "line": 5,
+          "character": 32
+        },
+        "end": {
+          "line": 5,
+          "character": 38
+        }
+      },
+      "title": "Conclusion"
     }
   ]
 }
