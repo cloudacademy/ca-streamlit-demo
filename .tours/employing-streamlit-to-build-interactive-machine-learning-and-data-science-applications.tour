@@ -150,7 +150,7 @@
     },
     {
       "directory": "src/pages",
-      "description": "The remaining pages of the application are stored in this `pages/` directory.\n\nWhen you run the application, Streamlit will detect the files in this directory and render a sidebar with links to each. This convention eliminates the need to configure routing to separate pages within a multipage application.",
+      "description": "The remaining pages of the application are stored in this `pages/` directory.\n\nWhen you run the application, Streamlit will detect the files in this directory and render a sidebar with links to each. This convention eliminates the need to configure routing to separate pages within a multipage application.\n\n[Streamlit sidebar](./assets/pages.png)",
       "title": "Pages"
     },
     {
