@@ -2,23 +2,25 @@ import os
 import boto3
 import streamlit as st
 from streamlit_pdf_viewer import pdf_viewer
-from helpers.credentials import credential_helper
 from io import BytesIO
 
-session = credential_helper.create_new_session()
-s3 = session.client('s3')
+# Amazon S3 client
+s3 = boto3.client('s3')
 bucket_name = os.environ['BUCKET_NAME']
 
 st.set_page_config(layout="wide")
 
+# Streamlit columns
 upload_s3, read_s3 = st.columns(2)
 
+# Column 1: Upload to Amazon S3 using Boto3
 with upload_s3:
     st.subheader("Upload to Amazon S3")
     obj = st.file_uploader(label=f"Uploading to: :green[{bucket_name}]")
     if obj is not None:
         s3.upload_fileobj(obj, bucket_name, obj.name)
 
+# Column 2: Read from Amazon S3 using Boto3
 with read_s3:
     st.subheader("Read from Amazon S3")
     response = s3.list_objects_v2(Bucket=bucket_name)
@@ -36,36 +38,17 @@ with read_s3:
 
 st.divider()
 
+# Displaying the selected Amazon S3 object
 if selected_obj is None:
     st.caption("Please select an object from S3 bucket")
 else:
     response = s3.get_object(Bucket=bucket_name, Key=selected_obj)
     body = response['Body'].read()
 
-    if selected_obj.endswith(".png"):
+    # Displaying the object based on the file type
+    if selected_obj.endswith(".png") or selected_obj.endswith(".jpg"):
         st.image(BytesIO(body))
     elif selected_obj.endswith(".pdf"):
         pdf_viewer(body)
     else:
         st.write(body.decode('utf-8'))
-
-with st.expander("See code"):
-        st.code("""
-        import os
-        import boto3
-        import streamlit as st
-        from helpers.credentials import credential_helper
-
-        session = credential_helper.create_new_session()
-        s3 = session.client('s3')
-        bucket_name = os.environ['BUCKET_NAME']
-
-        pdf = st.file_uploader(label="Drag the PDF file here. Limit 100MB")
-        if pdf is not None:
-            id = 123
-            bucket_name = "uploads-bmtrbr"
-            print(pdf.name)
-            print(type(pdf))
-            pdf.seek(0)
-            s3.upload_fileobj(pdf, bucket_name, pdf.name)
-        """)

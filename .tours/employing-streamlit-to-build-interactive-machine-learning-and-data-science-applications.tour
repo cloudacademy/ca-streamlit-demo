@@ -1,0 +1,289 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Employing Streamlit to Build Interactive Machine Learning and Data Science Applications",
+  "steps": [
+    {
+      "directory": "src",
+      "description": "The Streamlit application code is stored in this `src/` directory. \n\nTo run the application, you must first install the necessary libraries listed in the `requirements.txt` file, which you will review next.",
+      "title": "Source code"
+    },
+    {
+      "file": "src/requirements.txt",
+      "selection": {
+        "start": {
+          "line": 1,
+          "character": 1
+        },
+        "end": {
+          "line": 3,
+          "character": 7
+        }
+      },
+      "description": "The `streamlit` library will be referenced in each of the application files. This library contains the UI elements that will render the various widgets and fields used in the application.\n\n`boto3` will be used to interact with the AWS services. To use this library, you must configure AWS credentials within the environment the Streamlit application is served.\n\nThe `pandas` library is used to present data within the application. ",
+      "title": "Python libraries"
+    },
+    {
+      "file": "src/requirements.txt",
+      "selection": {
+        "start": {
+          "line": 4,
+          "character": 1
+        },
+        "end": {
+          "line": 4,
+          "character": 21
+        }
+      },
+      "description": "Custom components allow users to extend the functionality of Streamlit elements.\n\n[streamlit_pdf_viewer](https://github.com/lfoppiano/streamlit-pdf-viewer) is a third-party, custom Streamlit component that allows you to control how PDF files are displayed. \n\n*Note*: The `streamlit_pdf_viewer` has been tested on Chrome and Firefox browsers only.",
+      "title": "Custom components"
+    },
+    {
+      "file": "src/Basics.py",
+      "description": "This `Basics.py` file contains examples of basic Streamlit elements that only require the use of the `streamlit` library.\n\nThis file will serve as the application's entry point, and the elements used in this file will be incorporated throughout the rest of the code.",
+      "line": 1,
+      "title": "Basics"
+    },
+    {
+      "file": "src/Basics.py",
+      "selection": {
+        "start": {
+          "line": 5,
+          "character": 1
+        },
+        "end": {
+          "line": 7,
+          "character": 29
+        }
+      },
+      "description": "Streamlit page settings can be configured using the `st.set_page_config`.\n\nThis configuration uses a wide layout, and the page title will display `Streamlit Basics`. The `page_title` refers to the title shown in the browser tab, while the `st.title()` component displays the title as a header on the page.",
+      "title": "Page config"
+    },
+    {
+      "file": "src/Basics.py",
+      "selection": {
+        "start": {
+          "line": 9,
+          "character": 1
+        },
+        "end": {
+          "line": 12,
+          "character": 86
+        }
+      },
+      "description": "Containers (`st.container()`) can be inserted into an app to provide structure for elements you choose to place inside.\n\nTabs within the container are created using the `st.tabs()` call. This method accepts a list of tab names as an argument and outputs separate tab objects.\n\nSince the tabs() method received four names, it outputs four tab objects each assigned to a matching variable.",
+      "title": "Containers"
+    },
+    {
+      "file": "src/Basics.py",
+      "selection": {
+        "start": {
+          "line": 17,
+          "character": 1
+        },
+        "end": {
+          "line": 17,
+          "character": 15
+        }
+      },
+      "description": "The `with` notation can be seen throughout the code. Streamlit methods, like `st.containers` and `st.tabs` can be called directly and added to using the `.write()` call.\n\nHere's another way to add content to the `text` tab:\n\n- `text.write(\"This is text added to the tab directly\")`\n\nUsing `with` offers more structure and tends to read easier, however, the individual elements can still be added to using the `.write()` method. The use of either option usually comes down to personal preference.",
+      "title": "With notation"
+    },
+    {
+      "file": "src/Basics.py",
+      "selection": {
+        "start": {
+          "line": 18,
+          "character": 1
+        },
+        "end": {
+          "line": 24,
+          "character": 47
+        }
+      },
+      "description": "The `text` tab uses text elements to format strings on the page. The tab will render the following elements:\n\n[Text elements](./assets/text_elements.png)",
+      "title": "Text"
+    },
+    {
+      "file": "src/Basics.py",
+      "selection": {
+        "start": {
+          "line": 26,
+          "character": 1
+        },
+        "end": {
+          "line": 52,
+          "character": 10
+        }
+      },
+      "description": "The `data` tab renders a data frame chart on the page. \n\nThe Pandas Python library creates a `DataFrame` object and stores it in the `df` variable.\n\nThe `st.dataframe` element accepts the `df` object as an argument along with a `column_config`. This configuration dictates how the data frame is displayed on the page.\n\n[Data frame element](./assets/data.png)",
+      "title": "Data"
+    },
+    {
+      "file": "src/Basics.py",
+      "selection": {
+        "start": {
+          "line": 54,
+          "character": 1
+        },
+        "end": {
+          "line": 59,
+          "character": 75
+        }
+      },
+      "description": "The `st.chat_input` element used in the `chat` tab stores user input as a `prompt`, then passes the string to the `st.write()` element to display the input to the screen.\n\nStoring chat input as a variable is commonly used for chat bot applications to gather input to send to Machine Learning models.\n\n[Chat input element](./assets/chat.png)",
+      "title": "Chat"
+    },
+    {
+      "file": "src/Basics.py",
+      "selection": {
+        "start": {
+          "line": 61,
+          "character": 1
+        },
+        "end": {
+          "line": 68,
+          "character": 28
+        }
+      },
+      "description": "The `markdown` tab provides a text area element and stores the markdown string as `md`.\n\nThe markdown string is displayed as rendered markdown using the `st.markdown()` element.\n\n[Markdown element](./assets/markdown.png)",
+      "title": "Markdown"
+    },
+    {
+      "directory": "src/pages",
+      "description": "The remaining pages of the application are stored in this `pages/` directory.\n\nWhen you run the application, Streamlit will detect the files in this directory and render a sidebar with links to each. This convention eliminates the need to configure routing to separate pages within a multipage application.",
+      "title": "Pages"
+    },
+    {
+      "file": "src/pages/Amazon_S3.py",
+      "description": "This page of the application interacts with an Amazon S3 bucket using the Boto3 Python library.\n\nThe page will display two columns. The first column can be used to upload files and images to an Amazon S3 bucket, and the second column can be used to select an object from the bucket to display on the page.\n\n[Amazon S3 page](./assets/s3_before.png)",
+      "line": 1,
+      "title": "Amazon S3"
+    },
+    {
+      "file": "src/pages/Amazon_S3.py",
+      "selection": {
+        "start": {
+          "line": 1,
+          "character": 1
+        },
+        "end": {
+          "line": 9,
+          "character": 40
+        }
+      },
+      "description": "If you are familiar with Amazon Lambda functions, you will recognize the first few lines of code.\n\nThe `boto3` library will create an `s3` client that will interact with the S3 service. The custom `streamlit_pdf_viewer` component and the `BytesIO` module will aid in rendering selected S3 objects to the page.",
+      "title": "Boto3"
+    },
+    {
+      "file": "src/pages/Amazon_S3.py",
+      "description": "Streamlit columns work similarly to tabs. The `st.columns()` element accepts an integer to determine how many columns to render. The `upload_s3` and `read_s3` variables will store the individual column elements, which can be updated using the `with` notation.",
+      "line": 14,
+      "title": "Columns"
+    },
+    {
+      "file": "src/pages/Amazon_S3.py",
+      "selection": {
+        "start": {
+          "line": 16,
+          "character": 1
+        },
+        "end": {
+          "line": 21,
+          "character": 54
+        }
+      },
+      "description": "The upload column creates an Amazon S3 object using the `st.file_uploader` element.\n\nIf the `obj` variable contains a file, the S3 `upload_fileobj()` method is called, passing in the object to upload, destination S3 bucket, and object name as arguments.",
+      "title": "Upload column"
+    },
+    {
+      "file": "src/pages/Amazon_S3.py",
+      "selection": {
+        "start": {
+          "line": 23,
+          "character": 1
+        },
+        "end": {
+          "line": 37,
+          "character": 55
+        }
+      },
+      "description": "To determine what file or image to display, the S3 `list_objects_v2` method is called on the S3 bucket and the list of objects is stored as `response`.\n\nIf the list objects call returns a non-empty list of objects, the objects are added to an `object_list`. The objects that end with `/` are S3 folders and will not render any objects, so they will be omitted from the list.\n\nAn `st.selectbox` element is created by passing in a label, the object list, and an optional index. Once an object is selected, a `st.caption` will display the object name.",
+      "title": "Read column"
+    },
+    {
+      "file": "src/pages/Amazon_S3.py",
+      "selection": {
+        "start": {
+          "line": 41,
+          "character": 1
+        },
+        "end": {
+          "line": 54,
+          "character": 39
+        }
+      },
+      "description": "The selected object from the `read_s3` column will be displayed when it is selected.\n\nThe application will make an S3 `get_object()` call to retrieve the object, and an `if/else` statement is used to render the object based on the object name. \n\nImages ending with `png` and `jpg` will be rendered using an `st.image` element, PDFs with the custom `pdf_viewer` component, and text files using a `st.write` element.",
+      "title": "Display objects"
+    },
+    {
+      "file": "src/pages/Amazon_Bedrock.py",
+      "selection": {
+        "start": {
+          "line": 7,
+          "character": 1
+        },
+        "end": {
+          "line": 14,
+          "character": 32
+        }
+      },
+      "description": "boto3 bedrock client + decode_image helper"
+    },
+    {
+      "file": "src/pages/Amazon_Bedrock.py",
+      "selection": {
+        "start": {
+          "line": 16,
+          "character": 1
+        },
+        "end": {
+          "line": 45,
+          "character": 36
+        }
+      },
+      "description": "gen image function "
+    },
+    {
+      "file": "src/pages/Amazon_Bedrock.py",
+      "selection": {
+        "start": {
+          "line": 54,
+          "character": 1
+        },
+        "end": {
+          "line": 71,
+          "character": 90
+        }
+      },
+      "description": "text input column "
+    },
+    {
+      "file": "src/pages/Amazon_Bedrock.py",
+      "selection": {
+        "start": {
+          "line": 73,
+          "character": 1
+        },
+        "end": {
+          "line": 81,
+          "character": 51
+        }
+      },
+      "description": "result column  spinner description"
+    },
+    {
+      "directory": "src",
+      "description": "Conclusion "
+    }
+  ]
+}
