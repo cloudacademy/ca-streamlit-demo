@@ -32,7 +32,7 @@ def generate_image(prompt):
     )
     
     response = bedrock.invoke_model(
-                modelId="amazon.titan-image-generator-v1",
+                modelId=bedrock_model_id,
                 accept="application/json", 
                 contentType="application/json",
                 body=body
@@ -110,7 +110,7 @@ with st.expander("See code"):
         )
         
         response = bedrock.invoke_model(
-                    modelId="amazon.titan-image-generator-v1",
+                    modelId=bedrock_model_id,
                     accept="application/json", 
                     contentType="application/json",
                     body=body

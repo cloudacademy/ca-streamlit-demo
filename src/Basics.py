@@ -2,13 +2,18 @@ import streamlit as st
 import pandas as pd
 import random
 
-st.set_page_config(layout="wide")
-
+# Streamlit page configuration
+st.set_page_config(layout="wide", page_title="Streamlit Basics")
 st.title("Streamlit Basics")
 
+# Streamlit container
 with st.container(border=True):
+    # Tabs
     text, data, chat, markdown = st.tabs(["Text", "Data", "Chat", "Markdown Editor"])
 
+    # Tab content
+
+    # Distplaying text
     with text:
         st.title("Titles")
         st.divider()
@@ -29,6 +34,7 @@ with st.container(border=True):
             st.code("for i in range(8): print(i)")
             """)
 
+    # Displaying data as a data frame
     with data:
         st.subheader("Display data using a data frame")
         df = pd.DataFrame(
@@ -84,6 +90,7 @@ with st.container(border=True):
             )
             """)
     
+    # Chat input and variables
     with chat:
         st.subheader("Enter in a prompt to the chat")
         prompt = st.chat_input("Say something")
@@ -97,6 +104,7 @@ with st.container(border=True):
                 st.write(f"You entered the following prompt: :blue[{prompt}]")
             """)
 
+    # Displaying Markdown and editor
     with markdown:
         st.subheader("Edit and render Markdown")
         md = st.text_area('Type in your markdown string (without outer quotes)')
@@ -108,9 +116,8 @@ with st.container(border=True):
         with st.expander("See code"):
             st.code("""
             md = st.text_area('Type in your markdown string (without outer quotes)')
-
-            st.subheader("Rendered Markdown")
-            st.markdown(md)
+            with st.container():
+                st.divider()
+                st.subheader("Rendered Markdown")
+                st.markdown(md)
             """)
-
-
