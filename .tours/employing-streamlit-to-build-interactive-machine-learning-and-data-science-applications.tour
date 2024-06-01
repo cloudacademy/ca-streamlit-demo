@@ -100,7 +100,7 @@
           "character": 47
         }
       },
-      "description": "The `text` tab uses text elements to format strings on the page. The tab will render the following elements:\n\n[Text elements](./assets/text_elements.png)",
+      "description": "The `text` tab uses text elements to format strings on the page.",
       "title": "Text"
     },
     {
@@ -115,7 +115,7 @@
           "character": 10
         }
       },
-      "description": "The `data` tab renders a data frame chart on the page. \n\nThe Pandas Python library creates a `DataFrame` object and stores it in the `df` variable.\n\nThe `st.dataframe` element accepts the `df` object as an argument along with a `column_config`. This configuration dictates how the data frame is displayed on the page.\n\n[Data frame element](./assets/data.png)",
+      "description": "The `data` tab renders a data frame chart on the page. \n\nThe Pandas Python library creates a `DataFrame` object and stores it in the `df` variable.\n\nThe `st.dataframe` element accepts the `df` object as an argument along with a `column_config`. This configuration dictates how the data frame is displayed on the page.",
       "title": "Data"
     },
     {
@@ -130,7 +130,7 @@
           "character": 75
         }
       },
-      "description": "The `st.chat_input` element used in the `chat` tab stores user input as a `prompt`, then passes the string to the `st.write()` element to display the input to the screen.\n\nStoring chat input as a variable is commonly used for chat bot applications to gather input to send to Machine Learning models.\n\n[Chat input element](./assets/chat.png)",
+      "description": "The `st.chat_input` element used in the `chat` tab stores user input as a `prompt`, then passes the string to the `st.write()` element to display the input to the screen.\n\nStoring chat input as a variable is commonly used for chat bot applications to gather input to send to Machine Learning models.",
       "title": "Chat"
     },
     {
@@ -145,17 +145,17 @@
           "character": 28
         }
       },
-      "description": "The `markdown` tab provides a text area element and stores the markdown string as `md`.\n\nThe markdown string is displayed as rendered markdown using the `st.markdown()` element.\n\n[Markdown element](./assets/markdown.png)",
+      "description": "The `markdown` tab provides a text area element and stores the markdown string as `md`.\n\nThe markdown string is displayed as rendered markdown using the `st.markdown()` element.",
       "title": "Markdown"
     },
     {
       "directory": "src/pages",
-      "description": "The remaining pages of the application are stored in this `pages/` directory.\n\nWhen you run the application, Streamlit will detect the files in this directory and render a sidebar with links to each. This convention eliminates the need to configure routing to separate pages within a multipage application.\n\n[Streamlit sidebar](./assets/pages.png)",
+      "description": "The remaining pages of the application are stored in this `pages/` directory.\n\nWhen you run the application, Streamlit will detect the files in this directory and render a sidebar with links to each. This convention eliminates the need to configure routing to separate pages within a multipage application.",
       "title": "Pages"
     },
     {
       "file": "src/pages/Amazon_S3.py",
-      "description": "This page of the application interacts with an Amazon S3 bucket using the Boto3 Python library.\n\nThe page will display two columns. The first column can be used to upload files and images to an Amazon S3 bucket, and the second column can be used to select an object from the bucket to display on the page.\n\n[Amazon S3 page](./assets/s3_before.png)",
+      "description": "This page of the application interacts with an Amazon S3 bucket using the Boto3 Python library.\n\nThe page will display two columns. The first column can be used to upload files and images to an Amazon S3 bucket, and the second column can be used to select an object from the bucket to display on the page.",
       "line": 1,
       "title": "Amazon S3"
     },
@@ -222,7 +222,7 @@
           "character": 39
         }
       },
-      "description": "The selected object from the `read_s3` column will be displayed when it is selected.\n\nThe application will make an S3 `get_object()` call to retrieve the object, and an `if/else` statement is used to render the object based on the object name. \n\nImages ending with `png` and `jpg` will be rendered using an `st.image` element, PDFs with the custom `pdf_viewer` component, and text files using a `st.write` element.\n\n[Upload and display](./assets/s3_after.png)",
+      "description": "The selected object from the `read_s3` column will be displayed when it is selected.\n\nThe application will make an S3 `get_object()` call to retrieve the object, and an `if/else` statement is used to render the object based on the object name. \n\nImages ending with `png` and `jpg` will be rendered using an `st.image` element, PDFs with the custom `pdf_viewer` component, and text files using a `st.write` element.",
       "title": "Display objects"
     },
     {
@@ -303,7 +303,7 @@
           "character": 51
         }
       },
-      "description": "The `result_column` checks if the `generate_button` value is true and calls the `st.spinner` element to display a temporary message as the `generate_image` function works in the background.\n\nThe resulting image is then passed to a `st.image` element to render it on the page.\n\n[Amazon Bedrock Image Generator](./assets/image_gen.png)",
+      "description": "The `result_column` checks if the `generate_button` value is true and calls the `st.spinner` element to display a temporary message as the `generate_image` function works in the background.\n\nThe resulting image is then passed to a `st.image` element to render it on the page.",
       "title": "Results"
     },
     {
