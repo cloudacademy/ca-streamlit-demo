@@ -156,7 +156,8 @@
     {
       "file": "src/pages/Amazon_S3.py",
       "description": "This page of the application interacts with an Amazon S3 bucket using the Boto3 Python library.\n\nThe page will display two columns. The first column can be used to upload files and images to an Amazon S3 bucket, and the second column can be used to select an object from the bucket to display on the page.\n\n[Amazon S3 page](./assets/s3_before.png)",
-      "line": 1
+      "line": 1,
+      "title": "Amazon S3"
     },
     {
       "file": "src/pages/Amazon_S3.py",
@@ -227,7 +228,8 @@
     {
       "file": "src/pages/Amazon_Bedrock.py",
       "description": "The Amazon Bedrock page will use the Amazon Titan Image Generator Model to generate an image based on a prompt. ",
-      "line": 9
+      "line": 9,
+      "title": "Amazon Bedrock"
     },
     {
       "file": "src/pages/Amazon_Bedrock.py",
