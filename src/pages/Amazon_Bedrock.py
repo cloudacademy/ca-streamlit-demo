@@ -4,8 +4,11 @@ import base64
 import streamlit as st
 from io import BytesIO
 
-bedrock = boto3.client('bedrock-runtime')
-bedrock_model_id = "amazon.titan-image-generator-v1"
+# bedrock = boto3.client('bedrock-runtime', region_name='us-west-2')
+# bedrock_model_id = "amazon.titan-image-generator-v1"
+# use us-east-1 for nova canvas
+bedrock = boto3.client('bedrock-runtime', region_name='us-east-1')
+bedrock_model_id = "amazon.nova-canvas-v1:0"
 
 # Convert image data to BytesIO object
 def decode_image(image_data):
@@ -25,7 +28,6 @@ def generate_image(prompt):
                 "quality": "standard",
                 "height": 768,
                 "width": 768,
-                "cfgScale": 8.0,
                 "seed": 100             
             }
         }
@@ -72,7 +74,7 @@ with st.container():
         if generate_button:
             with st.spinner("Generating image..."):
                 image = generate_image(prompt_text)
-            st.image(image, use_column_width=True)
+            st.image(image, use_container_width=True)
 
 with st.expander("See code"):
     st.code("""
@@ -82,8 +84,8 @@ with st.expander("See code"):
     import streamlit as st
     from io import BytesIO
 
-    bedrock = boto3.client('bedrock-runtime')
-    bedrock_model_id = "amazon.titan-image-generator-v1"
+    bedrock = boto3.client('bedrock-runtime', region_name='us-east-1')
+    bedrock_model_id = "amazon.nova-canvas-v1:0"
 
     # Convert image data to BytesIO object
     def decode_image(image_data):
@@ -103,7 +105,6 @@ with st.expander("See code"):
                     "quality": "standard",
                     "height": 768,
                     "width": 768,
-                    "cfgScale": 8.0,
                     "seed": 100             
                 }
             }
@@ -150,5 +151,5 @@ with st.expander("See code"):
             if generate_button:
                 with st.spinner("Generating image..."):
                     image = generate_image(prompt_text)
-                st.image(image, use_column_width=True)
+                st.image(image, use_container_width=True)
     """)
