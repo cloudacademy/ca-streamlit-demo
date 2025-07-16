@@ -227,7 +227,7 @@
     },
     {
       "file": "src/pages/Amazon_Bedrock.py",
-      "description": "The Amazon Bedrock page will use the Amazon Titan Image Generator Model to generate an image based on a prompt. ",
+      "description": "The Amazon Bedrock page will use the Amazon Nova Canvas Model to generate an image based on a prompt. ",
       "line": 9,
       "title": "Amazon Bedrock"
     },
@@ -243,7 +243,7 @@
           "character": 32
         }
       },
-      "description": "The Amazon Bedrock runtime client and model are declared, along with a helper function, `decode_image`. The Titan Image Generator model will return image data that will need to be converted to a BytesIO object to render using the `st.image` element.",
+      "description": "The Amazon Bedrock runtime client and model are declared, along with a helper function, `decode_image`. The Nova Canvas model will return image data that will need to be converted to a BytesIO object to render using the `st.image` element.",
       "title": "Bedrock runtime"
     },
     {
@@ -265,12 +265,12 @@
       "file": "src/pages/Amazon_Bedrock.py",
       "selection": {
         "start": {
-          "line": 54,
+          "line": 53,
           "character": 1
         },
         "end": {
-          "line": 63,
-          "character": 45
+          "line": 65,
+          "character": 90
         }
       },
       "description": "The main container of the page contains two columns.\n\nIn the first column, users will enter a prompt in a `st.text_input` that will be stored as the `prompt_text` variable. \n\nThe remaining elements in this column are used to define the `Generate` and `Clear` buttons.\n\nThe `clear_field` function interacts with the Streamlit session state. It accepts a prompt and updates the value of the `st.session_state.prompt`. Session state is used to store and persist state that can be manipulated with the use of callback functions. `clear_field` is a callback function that will get invoked when a user clicks the `Clear` button.",
@@ -280,11 +280,11 @@
       "file": "src/pages/Amazon_Bedrock.py",
       "selection": {
         "start": {
-          "line": 65,
+          "line": 62,
           "character": 1
         },
         "end": {
-          "line": 71,
+          "line": 65,
           "character": 90
         }
       },
@@ -295,11 +295,11 @@
       "file": "src/pages/Amazon_Bedrock.py",
       "selection": {
         "start": {
-          "line": 73,
+          "line": 68,
           "character": 1
         },
         "end": {
-          "line": 81,
+          "line": 74,
           "character": 51
         }
       },
