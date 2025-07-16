@@ -4,9 +4,6 @@ import base64
 import streamlit as st
 from io import BytesIO
 
-# bedrock = boto3.client('bedrock-runtime', region_name='us-west-2')
-# bedrock_model_id = "amazon.titan-image-generator-v1"
-# use us-east-1 for nova canvas
 bedrock = boto3.client('bedrock-runtime', region_name='us-east-1')
 bedrock_model_id = "amazon.nova-canvas-v1:0"
 
@@ -48,7 +45,7 @@ def generate_image(prompt):
 # Streamlit UI
 
 with st.container():
-    st.header("Amazon Bedrock Titan Image Generator", anchor=False, divider="rainbow")
+    st.header("Amazon Nova Canvas Image Generator", anchor=False, divider="rainbow")
 
     input_column, result_column = st.columns(2)
 
@@ -125,7 +122,7 @@ with st.expander("See code"):
     # Streamlit UI
 
     with st.container():
-        st.header("Amazon Bedrock Titan Image Generator", anchor=False, divider="rainbow")
+        st.header("Amazon Nova Canvas Image Generator", anchor=False, divider="rainbow")
 
         input_column, result_column = st.columns(2)
 
